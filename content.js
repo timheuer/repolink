@@ -9,15 +9,19 @@ window.onload = function () {
         button.textContent = 'Copy Link';
         button.classList.add('Button--secondary', 'Button--small', 'flex-md-order-2', 'Button');
         button.onclick = function () {
-            var textToCopy = org + '/' + repo + '#' + issueId;
-            navigator.clipboard.writeText(textToCopy).then(function () {
-                console.log('Copying to clipboard was successful!');
-            }, function (err) {
-                console.error('Could not copy text: ', err);
-            });
+            var linkText = org + '/' + repo + '#' + issueId;
+            var linkUrl = window.location.pathname;
+
+            navigator.clipboard.write([
+                new ClipboardItem({
+                    "text/plain": new Blob([linkText], { type: 'text/plain' }),
+                    "text/html": new Blob([`<a href="${linkUrl}">${linkText}</a>`], { type: 'text/html' })
+                })
+            ]);
         };
 
         var headerActionsDiv = document.querySelector('.gh-header-actions');
+
         if (headerActionsDiv) {
             headerActionsDiv.appendChild(button);
         }
