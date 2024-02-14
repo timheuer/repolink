@@ -15,7 +15,9 @@
         {
             "matches": [
                 "https://github.com/*/*/issues/*",
-                "https://www.github.com/*/*/issues/*"
+                "https://www.github.com/*/*/issues/*",
+                "https://github.com/*/*/pull/*",
+                "https://www.github.com/*/*/pull/*"
             ],
             "js": [
                 "content.js"
