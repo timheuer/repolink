@@ -28,7 +28,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: gh-repolink
-        path: .
+        path: gh-repolink.zip
 
     #- uses: birchill/edge-addon-upload@v1
     #  env:
