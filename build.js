@@ -17,7 +17,7 @@ archive.pipe(output);
 // Add all files in the current directory to the archive
 archive.glob('**', {
     // Exclude node_modules directory and zip file itself
-    ignore: ['node_modules/**', 'gh-repolink.zip', 'build.js', 'package-lock.json', 'package.json', '.gitignore']
+    ignore: ['node_modules/**', 'gh-repolink.zip', 'build.js', 'package-lock.json', 'package.json', '.gitignore', 'privacy.md', 'readme.md', 'license.md']
 });
 
 archive.finalize();
