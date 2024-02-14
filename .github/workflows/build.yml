@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+
+    - name: Archive Production Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: gh-repolink
+        path: .
+
+    #- uses: birchill/edge-addon-upload@v1
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #  with:
+    #    access_token_url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+    #    addon_file: gh-repolink.zip
+    #    client_id: ${{ secrets.EDGE_CLIENT_ID }}
+    #    client_secret: ${{ secrets.EDGE_CLIENT_SECRET }}
+    #    product_id: ${{ secrets.EDGE_PRODUCT_ID }}
