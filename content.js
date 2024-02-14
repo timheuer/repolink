@@ -1,6 +1,6 @@
 window.onload = function () {
     var path = window.location.pathname.split('/');
-    if (path.length === 5 && path[3] === 'issues') {
+    if (path.length === 5 && path[3] === 'issues' || path[3] === 'pull') {
         var org = path[1];
         var repo = path[2];
         var issueId = path[4];
